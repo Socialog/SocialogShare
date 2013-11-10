@@ -12,11 +12,6 @@ class Facebook extends AbstractHelper
      */
     protected $included = false;
 
-    /**
-     * @type \Zend\Http\PhpEnvironment\Request
-     */
-    protected $request;
-
     protected $defaults = array(
         'class'         => 'fb-like',
         'data-layout'        =>  'standard',
@@ -24,14 +19,6 @@ class Facebook extends AbstractHelper
         'data-show-faces'   => false,
         'data-share'         => true,
     );
-
-//    /**
-//     * @param \Zend\Http\PhpEnvironment\Request
-//     */
-//    public function __construct(Request $request)
-//    {
-//        $this->request = $request;
-//    }
 
     public function ensureScriptIncluded()
     {
