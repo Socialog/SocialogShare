@@ -1,0 +1,21 @@
+{
+    "name": "socialog/share",
+    "description": "Social Media share module for Socialog",
+    "type": "Module",
+    "license": "MIT",
+    "keywords": [
+        "share",
+        "socialog"
+    ],
+    "homepage": "http://www.socialog.io/",
+    "authors": [
+        {
+            "name": "Roy van Kaathoven",
+            "email": "ik@royvankaathoven.nl",
+            "homepage": "http://www.socialog.io/"
+        }
+    ],
+    "require": {
+        "socialog/socialog": "dev-master"
+    }
+}
