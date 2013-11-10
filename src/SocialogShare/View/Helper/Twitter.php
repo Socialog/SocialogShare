@@ -5,7 +5,7 @@ namespace SocialogShare\View\Helper;
 use Zend\Stdlib\ArrayUtils;
 use Zend\View\Helper\AbstractHelper;
 
-class Facebook extends AbstractHelper
+class Twitter extends AbstractHelper
 {
     /**
      * If the button is already included somewhere, else dont insert the tag twice
@@ -13,11 +13,10 @@ class Facebook extends AbstractHelper
     protected $included = false;
 
     protected $defaults = array(
-        'class'         => 'fb-like',
-        'data-layout'        =>  'standard',
-        'data-action'        => 'like',
-        'data-show-faces'   => false,
-        'data-share'         => true,
+        'class'         => 'twitter-share-button',
+        'href'          => 'https://twitter.com/share',
+        'data-hashtags' => '',
+        'data-via'      => '',
     );
 
     /**
@@ -28,15 +27,8 @@ class Facebook extends AbstractHelper
         if ($this->included) return;
 
         $script = <<<SCRIPT
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/nl_NL/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 SCRIPT;
-
         $this->getView()->inlineScript()->appendScript($script);
         $this->included = true;
     }
@@ -50,7 +42,7 @@ SCRIPT;
         $this->ensureScriptIncluded();
 
         $defaults = $this->defaults;
-        $defaults['data-href'] = $this->getView()->serverUrl(true);
+        $defaults['data-url'] = $this->getView()->serverUrl(true);
 
         $options = array_merge($defaults, $options);
 
