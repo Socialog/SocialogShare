@@ -4,13 +4,15 @@ namespace SocialogShare;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 
 /**
  * Socialog SEO Module
  */
 class Module implements
     AutoloaderProviderInterface,
-    ConfigProviderInterface
+    ConfigProviderInterface,
+    ViewHelperProviderInterface
 {
     /**
      * @return array
@@ -34,4 +36,8 @@ class Module implements
         );
     }
 
+    public function getViewHelperConfig()
+    {
+        return include __DIR__ . '/config/view_helpers.config.php';
+    }
 }
